@@ -3,12 +3,9 @@
 
 <h3>Gliederung:</h3>
 <ol>
-    <li><a href="#">Konzept</a></li>
-    <li><a href="#">Design</a></li>
-    <li><a href="#">technische Umsetzung</a>
-        <ol>
-           <li><a href="#">Projekt anlegen</a></li>
-           <li><a href="#">API Schnittstelle</a></li>
-        </ol>
-    </li>
+    <li><a href="../Documentation/KONZEPT.md">Konzept</a></li>
+    <li><a href="../Documentation/DESIGN.md">Design</a></li>
+    <li><a href="../Documentation/TECHNICAL.md">technische Umsetzung</a>
 </ol>
+
+
