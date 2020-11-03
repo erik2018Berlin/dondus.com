@@ -51,6 +51,8 @@ ggfs. der Umgebungsvariable hinzufügen
             <li>Linux</li>
         </ol>
     </li>
+    <li>'npm install -g yo generator-rest' im Terminal ausführen</li>
+    
 </ul>
 
 
