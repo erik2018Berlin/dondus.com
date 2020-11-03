@@ -9,3 +9,15 @@
 </ol>
 <hr>
 
+<h3>Branchbeschreibung</h3>
+<p> Mit 'branchname' + '_e' oder  + '_t' werden  
+entwicklerspez. Branches gekennzeichent.</p>
+
+<h4>genAPI</h4>
+<p>Hier sollen die ersten Test zu einer generierten Restful API unternommen werden.
+  Mögliche Frameworks sind:</p>
+   <ul>
+   <li><a href="https://github.com/diegohaz/rest">https://github.com/diegohaz/rest</a></li>
+   </ul> 
+
+
