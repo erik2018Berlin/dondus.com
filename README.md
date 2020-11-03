@@ -7,5 +7,5 @@
     <li><a href="/Documentation/DESIGN.md">Design</a></li>
     <li><a href="/Documentation/TECHNICAL.md">technische Umsetzung</a>
 </ol>
-
+<hr>
 

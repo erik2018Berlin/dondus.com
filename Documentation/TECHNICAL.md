@@ -7,6 +7,7 @@
     <li><a href="/Documentation/DESIGN.md">Design</a></li>
     <li><a href="/Documentation/TECHNICAL.md">technische Umsetzung</a>
 </ol>
+<hr>
 
 
 <ul>
@@ -18,6 +19,39 @@
 <section id="projekt-anlegen">
 <h3>Projekt anlegen</h3>
 
+<h4>Node.js installieren</h4>
+<h5>Windows</h5>
+<h5>MacOS</h5>
+<h5>Linux</h5>
+ggfs. der Umgebungsvariable hinzufügen
+
+<h4>MongoDB installieren</h4>
+<h5>Windows</h5>
+<h5>MacOS</h5>
+<h5>Linux</h5>
+ggfs. der Umgebungsvariable hinzufügen
+
+<h4>Angular installieren</h4>
+<h5>Windows</h5>
+<h5>MacOS</h5>
+<h5>Linux</h5>
+ggfs. der Umgebungsvariable hinzufügen
+
+<h4>Projekt initialisieren</h4>
+<ul>
+    <li>git branch anlegen und fetchen</li>
+    <li>im Projektverzeichnis 'npm init' ausführen</li>
+    <li>Mongod als Bg- Prozess starten 
+        <ol>
+            <li>Windows
+                <p>Im Installationverzeichnis von MongoDB die mongod.exe ausführen. 
+                Das sich öffnende Fenster kann einfach geschlossen werden.</p>
+            </li>
+            <li>MacOS</li>
+            <li>Linux</li>
+        </ol>
+    </li>
+</ul>
 
 
 </section>
