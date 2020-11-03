@@ -3,9 +3,9 @@
 
 <h3>Gliederung:</h3>
 <ol>
-    <li><a href="/KONZEPT.md">Konzept</a></li>
-    <li><a href="/DESIGN.md">Design</a></li>
-    <li><a href="/TECHNICAL.md">technische Umsetzung</a></li>
+    <li><a href="/main/KONZEPT.md">Konzept</a></li>
+    <li><a href="/main/DESIGN.md">Design</a></li>
+    <li><a href="/main/TECHNICAL.md">technische Umsetzung</a></li>
 </ol>
 
 
