@@ -39,7 +39,13 @@ const userSchema = new Schema({
   picture: {
     type: String,
     trim: true
-  }
+  },
+  address:{
+    type:String,
+    required: true
+  },
+
+/*adress, paymentdata*/
 }, {
   timestamps: true
 })

@@ -2,6 +2,11 @@ import { Router } from 'express'
 import user from './user'
 import auth from './auth'
 import passwordReset from './password-reset'
+//import service from './service'
+import provider from './provider'
+import service from './service'
+import calendar from './calendar'
+import meetingslot from './meetingslot'
 
 const router = new Router()
 
@@ -31,5 +36,9 @@ const router = new Router()
 router.use('/users', user)
 router.use('/auth', auth)
 router.use('/password-resets', passwordReset)
+router.use('/providers', provider)
+router.use('/services', service)
+router.use('/calendars', calendar)
+router.use('/meetingslots', meetingslot)
 
 export default router
