@@ -17,10 +17,10 @@ mongoose.Promise = Promise
 setImmediate(() => {
   server.listen(port, ip, () => {
     console.log('Express server listening on http://%s:%d, in %s mode', ip, port, env)
-    mongoose.connect(mongo.uri,function(){
+   /* mongoose.connect(mongo.uri,function(){
       mongoose.connection.db.dropDatabase();
-    });
-    demoData.start();
+    });*/
+   // demoData.start();
   })
 })
 
