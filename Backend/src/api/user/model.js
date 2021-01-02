@@ -1,6 +1,5 @@
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
-import randtoken from 'rand-token'
 import mongoose, { Schema } from 'mongoose'
 import mongooseKeywords from 'mongoose-keywords'
 import { env } from '../../config'
@@ -26,11 +25,6 @@ const userSchema = new Schema({
     index: true,
     trim: true
   },
-  services: {
-    facebook: String,
-    github: String,
-    google: String
-  },
   role: {
     type: String,
     enum: roles,
@@ -39,13 +33,7 @@ const userSchema = new Schema({
   picture: {
     type: String,
     trim: true
-  },
-  address:{
-    type:String,
-    required: true
-  },
-
-/*adress, paymentdata*/
+  }
 }, {
   timestamps: true
 })
@@ -96,21 +84,7 @@ userSchema.methods = {
 }
 
 userSchema.statics = {
-  roles,
-
-  createFromService ({ service, id, email, name, picture }) {
-    return this.findOne({ $or: [{ [`services.${service}`]: id }, { email }] }).then((user) => {
-      if (user) {
-        user.services[service] = id
-        user.name = name
-        user.picture = picture
-        return user.save()
-      } else {
-        const password = randtoken.generate(16)
-        return this.create({ services: { [service]: id }, email, password, name, picture })
-      }
-    })
-  }
+  roles
 }
 
 userSchema.plugin(mongooseKeywords, { paths: ['email', 'name'] })

@@ -1,31 +1,23 @@
-# backend v0.0.0
+# api v0.0.0
 
 
 
 - [Auth](#auth)
 	- [Authenticate](#authenticate)
-	- [Authenticate with Facebook](#authenticate-with-facebook)
-	- [Authenticate with Github](#authenticate-with-github)
-	- [Authenticate with Google](#authenticate-with-google)
 	
-- [Calendar](#calendar)
-	- [Create calendar](#create-calendar)
-	- [Delete calendar](#delete-calendar)
-	- [Retrieve calendar](#retrieve-calendar)
-	- [Retrieve calendars](#retrieve-calendars)
-	- [Update calendar](#update-calendar)
+- [Customer](#customer)
+	- [Create customer](#create-customer)
+	- [Delete customer](#delete-customer)
+	- [Retrieve customer](#retrieve-customer)
+	- [Retrieve customers](#retrieve-customers)
+	- [Update customer](#update-customer)
 	
-- [Meetingslot](#meetingslot)
-	- [Create meetingslot](#create-meetingslot)
-	- [Delete meetingslot](#delete-meetingslot)
-	- [Retrieve meetingslot](#retrieve-meetingslot)
-	- [Retrieve meetingslots](#retrieve-meetingslots)
-	- [Update meetingslot](#update-meetingslot)
-	
-- [PasswordReset](#passwordreset)
-	- [Send email](#send-email)
-	- [Submit password](#submit-password)
-	- [Verify token](#verify-token)
+- [MeetingSlot](#meetingslot)
+	- [Create meeting slot](#create-meeting-slot)
+	- [Delete meeting slot](#delete-meeting-slot)
+	- [Retrieve meeting slot](#retrieve-meeting-slot)
+	- [Retrieve meeting slots](#retrieve-meeting-slots)
+	- [Update meeting slot](#update-meeting-slot)
 	
 - [Provider](#provider)
 	- [Create provider](#create-provider)
@@ -72,52 +64,13 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Master access_token.</p>							|
 
-## Authenticate with Facebook
+# Customer
+
+## Create customer
 
 
 
-	POST /auth/facebook
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>Facebook user accessToken.</p>							|
-
-## Authenticate with Github
-
-
-
-	POST /auth/github
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>Github user accessToken.</p>							|
-
-## Authenticate with Google
-
-
-
-	POST /auth/google
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>Google user accessToken.</p>							|
-
-# Calendar
-
-## Create calendar
-
-
-
-	POST /calendars
+	POST /customers
 
 
 ### Parameters
@@ -125,15 +78,16 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| name			| 			|  <p>Calendar's name.</p>							|
-| notes			| 			|  <p>Calendar's notes.</p>							|
-| meetingSlots			| 			|  <p>Calendar's meetingSlots.</p>							|
+| street			| 			|  <p>Customer's street.</p>							|
+| number			| 			|  <p>Customer's number.</p>							|
+| postcode			| 			|  <p>Customer's postcode.</p>							|
+| bankInformation			| 			|  <p>Customer's bankInformation.</p>							|
 
-## Delete calendar
+## Delete customer
 
 
 
-	DELETE /calendars/:id
+	DELETE /customers/:id
 
 
 ### Parameters
@@ -142,60 +96,35 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
 
-## Retrieve calendar
+## Retrieve customer
 
 
 
-	GET /calendars/:id
+	GET /customers/:id
 
 
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-
-## Retrieve calendars
+## Retrieve customers
 
 
 
-	GET /calendars
+	GET /customers
 
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|
 | sort			| String[]			| **optional** <p>Order of returned items.</p>							|
 | fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
 
-## Update calendar
+## Update customer
 
 
 
-	PUT /calendars/:id
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
-| name			| 			|  <p>Calendar's name.</p>							|
-| notes			| 			|  <p>Calendar's notes.</p>							|
-| meetingSlots			| 			|  <p>Calendar's meetingSlots.</p>							|
-
-# Meetingslot
-
-## Create meetingslot
-
-
-
-	POST /meetingslots
+	PUT /customers/:id
 
 
 ### Parameters
@@ -203,17 +132,18 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| date			| 			|  <p>Meetingslot's date.</p>							|
-| adress			| 			|  <p>Meetingslot's adress.</p>							|
-| bookingId			| 			|  <p>Meetingslot's bookingId.</p>							|
-| status			| 			|  <p>Meetingslot's status.</p>							|
-| serviceId			| 			|  <p>Meetingslot's serviceId.</p>							|
+| street			| 			|  <p>Customer's street.</p>							|
+| number			| 			|  <p>Customer's number.</p>							|
+| postcode			| 			|  <p>Customer's postcode.</p>							|
+| bankInformation			| 			|  <p>Customer's bankInformation.</p>							|
 
-## Delete meetingslot
+# MeetingSlot
+
+## Create meeting slot
 
 
 
-	DELETE /meetingslots/:id
+	POST /meeting-slots
 
 
 ### Parameters
@@ -221,12 +151,19 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
+| serviceId			| 			|  <p>Meeting slot's serviceId.</p>							|
+| date			| 			|  <p>Meeting slot's date.</p>							|
+| status			| 			|  <p>Meeting slot's status.</p>							|
+| bookingId			| 			|  <p>Meeting slot's bookingId.</p>							|
+| street			| 			|  <p>Meeting slot's street.</p>							|
+| number			| 			|  <p>Meeting slot's number.</p>							|
+| postcode			| 			|  <p>Meeting slot's postcode.</p>							|
 
-## Retrieve meetingslot
+## Delete meeting slot
 
 
 
-	GET /meetingslots/:id
+	DELETE /meeting-slots/:id
 
 
 ### Parameters
@@ -235,29 +172,35 @@
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
 
-## Retrieve meetingslots
+## Retrieve meeting slot
 
 
 
-	GET /meetingslots
+	GET /meeting-slots/:id
+
+
+## Retrieve meeting slots
+
+
+
+	GET /meeting-slots
 
 
 ### Parameters
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>user access token.</p>							|
 | q			| String			| **optional** <p>Query to search.</p>							|
 | page			| Number			| **optional** <p>Page number.</p>							|
 | limit			| Number			| **optional** <p>Amount of returned items.</p>							|
 | sort			| String[]			| **optional** <p>Order of returned items.</p>							|
 | fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
 
-## Update meetingslot
+## Update meeting slot
 
 
 
-	PUT /meetingslots/:id
+	PUT /meeting-slots/:id
 
 
 ### Parameters
@@ -265,47 +208,13 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| date			| 			|  <p>Meetingslot's date.</p>							|
-| adress			| 			|  <p>Meetingslot's adress.</p>							|
-| bookingId			| 			|  <p>Meetingslot's bookingId.</p>							|
-| status			| 			|  <p>Meetingslot's status.</p>							|
-| serviceId			| 			|  <p>Meetingslot's serviceId.</p>							|
-
-# PasswordReset
-
-## Send email
-
-
-
-	POST /password-resets
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| email			| String			|  <p>Email address to receive the password reset token.</p>							|
-| link			| String			|  <p>Link to redirect user.</p>							|
-
-## Submit password
-
-
-
-	PUT /password-resets/:token
-
-
-### Parameters
-
-| Name    | Type      | Description                          |
-|---------|-----------|--------------------------------------|
-| password			| String			|  <p>User's new password.</p>							|
-
-## Verify token
-
-
-
-	GET /password-resets/:token
-
+| serviceId			| 			|  <p>Meeting slot's serviceId.</p>							|
+| date			| 			|  <p>Meeting slot's date.</p>							|
+| status			| 			|  <p>Meeting slot's status.</p>							|
+| bookingId			| 			|  <p>Meeting slot's bookingId.</p>							|
+| street			| 			|  <p>Meeting slot's street.</p>							|
+| number			| 			|  <p>Meeting slot's number.</p>							|
+| postcode			| 			|  <p>Meeting slot's postcode.</p>							|
 
 # Provider
 
@@ -320,11 +229,11 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>master access token.</p>							|
-| userId			| 			|  <p>Provider's userId.</p>							|
-| serviceIds			| 			|  <p>Provider's serviceIds.</p>							|
-| bankAccount			| 			|  <p>Provider's bankAccount.</p>							|
-| calendarIds			| 			|  <p>Provider's calendarIds.</p>							|
+| access_token			| String			|  <p>user access token.</p>							|
+| street			| 			|  <p>Provider's street.</p>							|
+| number			| 			|  <p>Provider's number.</p>							|
+| postcode			| 			|  <p>Provider's postcode.</p>							|
+| bankInformation			| 			|  <p>Provider's bankInformation.</p>							|
 
 ## Delete provider
 
@@ -337,7 +246,7 @@
 
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
-| access_token			| String			|  <p>master access token.</p>							|
+| access_token			| String			|  <p>user access token.</p>							|
 
 ## Retrieve provider
 
@@ -375,10 +284,10 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>user access token.</p>							|
-| userId			| 			|  <p>Provider's userId.</p>							|
-| serviceIds			| 			|  <p>Provider's serviceIds.</p>							|
-| bankAccount			| 			|  <p>Provider's bankAccount.</p>							|
-| calendarIds			| 			|  <p>Provider's calendarIds.</p>							|
+| street			| 			|  <p>Provider's street.</p>							|
+| number			| 			|  <p>Provider's number.</p>							|
+| postcode			| 			|  <p>Provider's postcode.</p>							|
+| bankInformation			| 			|  <p>Provider's bankInformation.</p>							|
 
 # Service
 
@@ -398,7 +307,7 @@
 | postcodes			| 			|  <p>Service's postcodes.</p>							|
 | title			| 			|  <p>Service's title.</p>							|
 | description			| 			|  <p>Service's description.</p>							|
-| serviceCategory			| 			|  <p>Service's serviceCategory.</p>							|
+| category			| 			|  <p>Service's category.</p>							|
 | price			| 			|  <p>Service's price.</p>							|
 | pictures			| 			|  <p>Service's pictures.</p>							|
 
@@ -455,7 +364,7 @@
 | postcodes			| 			|  <p>Service's postcodes.</p>							|
 | title			| 			|  <p>Service's title.</p>							|
 | description			| 			|  <p>Service's description.</p>							|
-| serviceCategory			| 			|  <p>Service's serviceCategory.</p>							|
+| category			| 			|  <p>Service's category.</p>							|
 | price			| 			|  <p>Service's price.</p>							|
 | pictures			| 			|  <p>Service's pictures.</p>							|
 

@@ -1,41 +1,41 @@
 import { success, notFound, authorOrAdmin } from '../../services/response/'
-import { Provider } from '.'
+import { Customer } from '.'
 
 export const create = ({ user, bodymen: { body } }, res, next) =>
-  Provider.create({ ...body, user })
-    .then((provider) => provider.view(true))
+  Customer.create({ ...body, user })
+    .then((customer) => customer.view(true))
     .then(success(res, 201))
     .catch(next)
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Provider.find(query, select, cursor)
+  Customer.find(query, select, cursor)
     .populate('user')
-    .then((providers) => providers.map((provider) => provider.view()))
+    .then((customers) => customers.map((customer) => customer.view()))
     .then(success(res))
     .catch(next)
 
 export const show = ({ params }, res, next) =>
-  Provider.findById(params.id)
+  Customer.findById(params.id)
     .populate('user')
     .then(notFound(res))
-    .then((provider) => provider ? provider.view() : null)
+    .then((customer) => customer ? customer.view() : null)
     .then(success(res))
     .catch(next)
 
 export const update = ({ user, bodymen: { body }, params }, res, next) =>
-  Provider.findById(params.id)
+  Customer.findById(params.id)
     .populate('user')
     .then(notFound(res))
     .then(authorOrAdmin(res, user, 'user'))
-    .then((provider) => provider ? Object.assign(provider, body).save() : null)
-    .then((provider) => provider ? provider.view(true) : null)
+    .then((customer) => customer ? Object.assign(customer, body).save() : null)
+    .then((customer) => customer ? customer.view(true) : null)
     .then(success(res))
     .catch(next)
 
 export const destroy = ({ user, params }, res, next) =>
-  Provider.findById(params.id)
+  Customer.findById(params.id)
     .then(notFound(res))
     .then(authorOrAdmin(res, user, 'user'))
-    .then((provider) => provider ? provider.remove() : null)
+    .then((customer) => customer ? customer.remove() : null)
     .then(success(res, 204))
     .catch(next)

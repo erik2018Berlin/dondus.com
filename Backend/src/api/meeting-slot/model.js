@@ -1,27 +1,30 @@
 import mongoose, { Schema } from 'mongoose'
 
-const meetingslotSchema = new Schema({
-  userId: {
+const meetingSlotSchema = new Schema({
+  serviceId: {
     type: Schema.ObjectId,
-    ref: 'User',
+    ref: 'Service',
     required: true
   },
   date: {
     type: Date
   },
-  adress: {
-    type: String
-  },
-  bookingId: {
-    type: String
-  },
   status: {
     type: String
   },
-  serviceId: {
+  /*bookingId: {
     type: Schema.ObjectId,
-    ref: 'Service',
-    required: true
+    ref: 'Booking',
+    required: false
+  },*/
+  street: {
+    type: String
+  },
+  number: {
+    type: String
+  },
+  postcode: {
+    type: String
   }
 }, {
   timestamps: true,
@@ -31,17 +34,18 @@ const meetingslotSchema = new Schema({
   }
 })
 
-meetingslotSchema.methods = {
+meetingSlotSchema.methods = {
   view (full) {
     const view = {
       // simple view
       id: this.id,
-      userId: this.userId.view(full),
-      date: this.date,
-      adress: this.adress,
-      bookingId: this.bookingId,
-      status: this.status,
       serviceId: this.serviceId.view(full),
+      date: this.date,
+      status: this.status,
+    //  bookingId: this.bookingId.view(full),
+      street: this.street,
+      number: this.number,
+      postcode: this.postcode,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
@@ -53,7 +57,7 @@ meetingslotSchema.methods = {
   }
 }
 
-const model = mongoose.model('Meetingslot', meetingslotSchema)
+const model = mongoose.model('MeetingSlot', meetingSlotSchema)
 
 export const schema = model.schema
 export default model

@@ -7,7 +7,7 @@ import { schema } from './model'
 export Service, { schema } from './model'
 
 const router = new Router()
-const { providerId, postcodes, title, description, serviceCategory, price, pictures } = schema.tree
+const { providerId, postcodes, title, description, category, price, pictures } = schema.tree
 
 /**
  * @api {post} /services Create service
@@ -19,7 +19,7 @@ const { providerId, postcodes, title, description, serviceCategory, price, pictu
  * @apiParam postcodes Service's postcodes.
  * @apiParam title Service's title.
  * @apiParam description Service's description.
- * @apiParam serviceCategory Service's serviceCategory.
+ * @apiParam category Service's category.
  * @apiParam price Service's price.
  * @apiParam pictures Service's pictures.
  * @apiSuccess {Object} service Service's data.
@@ -29,7 +29,7 @@ const { providerId, postcodes, title, description, serviceCategory, price, pictu
  */
 router.post('/',
   token({ required: true }),
-  body({ providerId, postcodes, title, description, serviceCategory, price, pictures }),
+  body({ providerId, postcodes, title, description, category, price, pictures }),
   create)
 
 /**
@@ -37,8 +37,7 @@ router.post('/',
  * @apiName RetrieveServices
  * @apiGroup Service
  * @apiUse listParams
- * @apiSuccess {Number} count Total amount of services.
- * @apiSuccess {Object[]} rows List of services.
+ * @apiSuccess {Object[]} services List of services.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
 router.get('/',
@@ -66,7 +65,7 @@ router.get('/:id',
  * @apiParam postcodes Service's postcodes.
  * @apiParam title Service's title.
  * @apiParam description Service's description.
- * @apiParam serviceCategory Service's serviceCategory.
+ * @apiParam category Service's category.
  * @apiParam price Service's price.
  * @apiParam pictures Service's pictures.
  * @apiSuccess {Object} service Service's data.
@@ -76,7 +75,7 @@ router.get('/:id',
  */
 router.put('/:id',
   token({ required: true }),
-  body({ providerId, postcodes, title, description, serviceCategory, price, pictures }),
+  body({ providerId, postcodes, title, description, category, price, pictures }),
   update)
 
 /**

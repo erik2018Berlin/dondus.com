@@ -1,21 +1,23 @@
 import mongoose, { Schema } from 'mongoose'
 
-const calendarSchema = new Schema({
-  userId: {
+const customerSchema = new Schema({
+  user: {
     type: Schema.ObjectId,
     ref: 'User',
     required: true
   },
-  name: {
+  street: {
     type: String
   },
-  notes: {
+  number: {
     type: String
   },
-  meetingSlots: {
-    type: [Schema.ObjectId],
-    ref: 'Meetingslot',
-    required: false
+  postcode: {
+    type: String
+  },
+  bankInformation: {
+    type: String,
+    required:false
   }
 }, {
   timestamps: true,
@@ -25,15 +27,16 @@ const calendarSchema = new Schema({
   }
 })
 
-calendarSchema.methods = {
+customerSchema.methods = {
   view (full) {
     const view = {
       // simple view
       id: this.id,
-      userId: this.userId.view(full),
-      name: this.name,
-      notes: this.notes,
-      meetingSlots: this.meetingSlots,
+      user: this.user.view(full),
+      street: this.street,
+      number: this.number,
+      postcode: this.postcode,
+      bankInformation: this.bankInformation,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
@@ -45,7 +48,7 @@ calendarSchema.methods = {
   }
 }
 
-const model = mongoose.model('Calendar', calendarSchema)
+const model = mongoose.model('Customer', customerSchema)
 
 export const schema = model.schema
 export default model

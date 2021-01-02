@@ -1,23 +1,22 @@
 import mongoose, { Schema } from 'mongoose'
 
 const providerSchema = new Schema({
-  userId: {
+  user: {
     type: Schema.ObjectId,
     ref: 'User',
     required: true
   },
-  serviceIds: {
-    type: [Schema.ObjectId],
-    ref: 'Service',
-    required: false
+  street: {
+    type: String
   },
-  bankAccount: {
+  number: {
+    type: String
+  },
+  postcode: {
+    type: String
+  },
+  bankInformation: {
     type: String,
-    required:false
-  },
-  calendarIds: {
-    type: [Schema.ObjectId],
-    ref: 'Calendar',
     required: false
   }
 }, {
@@ -33,10 +32,11 @@ providerSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      userId: this.userId.view(full),
-      serviceIds: this.serviceIds.view(full),
-      bankAccount: this.bankAccount,
-      calendarIds: this.calendarIds.view(full),
+      user: this.user.view(full),
+      street: this.street,
+      number: this.number,
+      postcode: this.postcode,
+      bankInformation: this.bankInformation,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }

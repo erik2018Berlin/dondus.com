@@ -3,13 +3,8 @@ import { User } from '.'
 import { sign } from '../../services/jwt'
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  User.count(query)
-    .then(count => User.find(query, select, cursor)
-      .then(users => ({
-        rows: users.map((user) => user.view()),
-        count
-      }))
-    )
+  User.find(query, select, cursor)
+    .then((users) => users.map((user) => user.view()))
     .then(success(res))
     .catch(next)
 

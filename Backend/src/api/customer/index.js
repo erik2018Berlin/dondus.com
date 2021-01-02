@@ -4,24 +4,24 @@ import { middleware as body } from 'bodymen'
 import { token } from '../../services/passport'
 import { create, index, show, update, destroy } from './controller'
 import { schema } from './model'
-export Provider, { schema } from './model'
+export Customer, { schema } from './model'
 
 const router = new Router()
 const { street, number, postcode, bankInformation } = schema.tree
 
 /**
- * @api {post} /providers Create provider
- * @apiName CreateProvider
- * @apiGroup Provider
+ * @api {post} /customers Create customer
+ * @apiName CreateCustomer
+ * @apiGroup Customer
  * @apiPermission user
  * @apiParam {String} access_token user access token.
- * @apiParam street Provider's street.
- * @apiParam number Provider's number.
- * @apiParam postcode Provider's postcode.
- * @apiParam bankInformation Provider's bankInformation.
- * @apiSuccess {Object} provider Provider's data.
+ * @apiParam street Customer's street.
+ * @apiParam number Customer's number.
+ * @apiParam postcode Customer's postcode.
+ * @apiParam bankInformation Customer's bankInformation.
+ * @apiSuccess {Object} customer Customer's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Provider not found.
+ * @apiError 404 Customer not found.
  * @apiError 401 user access only.
  */
 router.post('/',
@@ -30,11 +30,11 @@ router.post('/',
   create)
 
 /**
- * @api {get} /providers Retrieve providers
- * @apiName RetrieveProviders
- * @apiGroup Provider
+ * @api {get} /customers Retrieve customers
+ * @apiName RetrieveCustomers
+ * @apiGroup Customer
  * @apiUse listParams
- * @apiSuccess {Object[]} providers List of providers.
+ * @apiSuccess {Object[]} customers List of customers.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
 router.get('/',
@@ -42,29 +42,29 @@ router.get('/',
   index)
 
 /**
- * @api {get} /providers/:id Retrieve provider
- * @apiName RetrieveProvider
- * @apiGroup Provider
- * @apiSuccess {Object} provider Provider's data.
+ * @api {get} /customers/:id Retrieve customer
+ * @apiName RetrieveCustomer
+ * @apiGroup Customer
+ * @apiSuccess {Object} customer Customer's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Provider not found.
+ * @apiError 404 Customer not found.
  */
 router.get('/:id',
   show)
 
 /**
- * @api {put} /providers/:id Update provider
- * @apiName UpdateProvider
- * @apiGroup Provider
+ * @api {put} /customers/:id Update customer
+ * @apiName UpdateCustomer
+ * @apiGroup Customer
  * @apiPermission user
  * @apiParam {String} access_token user access token.
- * @apiParam street Provider's street.
- * @apiParam number Provider's number.
- * @apiParam postcode Provider's postcode.
- * @apiParam bankInformation Provider's bankInformation.
- * @apiSuccess {Object} provider Provider's data.
+ * @apiParam street Customer's street.
+ * @apiParam number Customer's number.
+ * @apiParam postcode Customer's postcode.
+ * @apiParam bankInformation Customer's bankInformation.
+ * @apiSuccess {Object} customer Customer's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Provider not found.
+ * @apiError 404 Customer not found.
  * @apiError 401 user access only.
  */
 router.put('/:id',
@@ -73,13 +73,13 @@ router.put('/:id',
   update)
 
 /**
- * @api {delete} /providers/:id Delete provider
- * @apiName DeleteProvider
- * @apiGroup Provider
+ * @api {delete} /customers/:id Delete customer
+ * @apiName DeleteCustomer
+ * @apiGroup Customer
  * @apiPermission user
  * @apiParam {String} access_token user access token.
  * @apiSuccess (Success 204) 204 No Content.
- * @apiError 404 Provider not found.
+ * @apiError 404 Customer not found.
  * @apiError 401 user access only.
  */
 router.delete('/:id',

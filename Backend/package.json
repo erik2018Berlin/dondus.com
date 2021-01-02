@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "api",
   "version": "0.0.0",
   "main": "src",
   "private": true,
@@ -48,6 +48,7 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/register": "^7.8.3",
     "@babel/runtime": "^7.8.4",
+    "axios": "^0.21.1",
     "bcrypt": "^4.0.1",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
@@ -67,7 +68,6 @@
     "querymen": "^2.1.4",
     "rand-token": "^0.4.0",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5",
-    "@sendgrid/mail": "^6.5.4"
+    "request-promise": "^4.2.5"
   }
 }

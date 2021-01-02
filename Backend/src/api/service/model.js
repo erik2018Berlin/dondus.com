@@ -1,30 +1,30 @@
 import mongoose, { Schema } from 'mongoose'
 
 const serviceSchema = new Schema({
-  userId: {
-    type: Schema.ObjectId,
-    ref: 'User',
-    required: true
-  },
   providerId: {
     type: Schema.ObjectId,
     ref: 'Provider',
     required: true
   },
   postcodes: {
-    type: [String]
+    type: [String],
+    required: true
   },
   title: {
-    type: String
+    type: String,
+    required: true
   },
   description: {
-    type: String
+    type: String,
+    required: true
   },
-  serviceCategory: {
-    type: [String]
+  category: {
+    type: [String],
+    required: true
   },
   price: {
-    type: String
+    type: String,
+    required: true
   },
   pictures: {
     type: [String]
@@ -42,12 +42,11 @@ serviceSchema.methods = {
     const view = {
       // simple view
       id: this.id,
-      userId: this.userId.view(full),
-      providerId: this.providerId,
+      providerId: this.providerId.view(full),
       postcodes: this.postcodes,
       title: this.title,
       description: this.description,
-      serviceCategory: this.serviceCategory,
+      category: this.category,
       price: this.price,
       pictures: this.pictures,
       createdAt: this.createdAt,

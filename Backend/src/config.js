@@ -26,8 +26,6 @@ const config = {
     port: process.env.PORT || 9000,
     ip: process.env.IP || '0.0.0.0',
     apiRoot: process.env.API_ROOT || '',
-    defaultEmail: 'no-reply@backend.com',
-    sendgridKey: requireProcessEnv('SENDGRID_KEY'),
     masterKey: requireProcessEnv('MASTER_KEY'),
     jwtSecret: requireProcessEnv('JWT_SECRET'),
     mongo: {
@@ -41,7 +39,7 @@ const config = {
   test: { },
   development: {
     mongo: {
-      uri: 'mongodb://localhost/backend-dev',
+      uri: 'mongodb://localhost/api-dev',
       options: {
         debug: true
       }
@@ -51,7 +49,7 @@ const config = {
     ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost/backend'
+      uri: process.env.MONGODB_URI || 'mongodb://localhost/api'
     }
   }
 }
