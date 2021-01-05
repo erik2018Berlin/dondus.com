@@ -6,10 +6,8 @@ import { Service } from '.'
 export const create = ({ provider, bodymen: { body } }, res, next) =>
   Service.create({ ...body, provider })
     .then((service) => service.view(true))
-    .then(function(){
-      success(res, 201);
-      sendServicesToSocketClients(query, select, cursor);
-    })
+    .then(success(res, 201))
+    .then(sendServicesToSocketClients())
     .catch(next)
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
@@ -52,11 +50,11 @@ export const destroy = ({ params }, res, next) =>
     .catch(next)
 
 //send all services to the socket client if a new service was posted, a service gets updated or deleted
-function sendServicesToSocketClients(query, select, cursor){
+function sendServicesToSocketClients(){
 
   for (const socket of sockets) {
     //TODO query und co aus dem socket entnehmen, kann für jeden client anders sein
-    Service.find(query, select, cursor)
+    Service.find()
       .populate('provider')
       .then((services) => services.map((service) => socket.emit('data', service.view())))
     //TODO welches error ahndling in dem fall ?!
