@@ -14,7 +14,15 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) =>
     .populate('provider')
     .then((services) => services.map((service) => service.view()))
     .then(success(res))
+    .then(sendServicesToSocketClients("services"))
     .catch(next)
+
+
+function sendServicesToSocketClients(services){
+  for (const socket of sockets) {
+    socket.emit('data', {bla:"blubb"});
+  }
+}
 
 export const show = ({ params }, res, next) =>
   Service.findById(params.id)
