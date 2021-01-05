@@ -1,6 +1,8 @@
 import { success, notFound } from '../../services/response/'
 import { Service } from '.'
 
+
+
 export const create = ({ provider, bodymen: { body } }, res, next) =>
   Service.create({ ...body, provider })
     .then((service) => service.view(true))
@@ -37,3 +39,6 @@ export const destroy = ({ params }, res, next) =>
     .then((service) => service ? service.remove() : null)
     .then(success(res, 204))
     .catch(next)
+
+
+

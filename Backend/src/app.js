@@ -8,14 +8,26 @@ var demoData = require('../demodaten/generateDemoData');
 const app = express(apiRoot, api)
 const server = http.createServer(app)
 
-const io = require('socket.io')(server.server);
-let sockets = new Set();
+var io = require('socket.io')(server);
+global.sockets = new Set();
+
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
 
 io.on('connection', socket => {
   sockets.add(socket);
-  socket.emit('data', { data: "products" });
+  console.log("new socket client connected");
+  //socket.emit('data', { data: products });
+
   socket.on('clientData', data => console.log(data));
-  socket.on('disconnect', () => sockets.delete(socket));
+
+  socket.on('disconnect', () => {
+    sockets.delete(socket);
+    console.log("socket client disconnected");
+  });
 });
 
 if (mongo.uri) {
