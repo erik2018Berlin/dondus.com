@@ -32,21 +32,16 @@ export const update = ({ bodymen: { body }, params }, res, next) =>
     .then(notFound(res))
     .then((service) => service ? Object.assign(service, body).save() : null)
     .then((service) => service ? service.view(true) : null)
-    .then(function(){
-      success(res);
-      sendServicesToSocketClients(query, select, cursor)
-    })
-    .then(sendServicesToSocketClients(query, select, cursor))
+    .then(success(res))
+    .then(sendServicesToSocketClients())
     .catch(next)
 
 export const destroy = ({ params }, res, next) =>
   Service.findById(params.id)
     .then(notFound(res))
     .then((service) => service ? service.remove() : null)
-    .then(function(){
-      success(res, 204);
-      sendServicesToSocketClients(query, select, cursor)
-    })
+    .then(success(res, 204))
+    .then(sendServicesToSocketClients())
     .catch(next)
 
 //send all services to the socket client if a new service was posted, a service gets updated or deleted
