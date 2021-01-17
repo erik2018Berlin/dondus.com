@@ -5,6 +5,8 @@ import provider from './provider'
 import customer from './customer'
 import service from './service'
 import meetingSlot from './meeting-slot'
+import booking from './booking'
+import calendar from './calendar'
 
 const router = new Router()
 
@@ -37,5 +39,7 @@ router.use('/providers', provider)
 router.use('/customers', customer)
 router.use('/services', service)
 router.use('/meeting-slots', meetingSlot)
+router.use('/bookings', booking)
+router.use('/calendars', calendar)
 
 export default router
