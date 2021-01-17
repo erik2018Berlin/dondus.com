@@ -44,9 +44,24 @@ export const destroy = ({ params }, res, next) =>
     .then(sendServicesToSocketClients())
     .catch(next)
 
-//send all services to the socket client if a new service was posted, a service gets updated or deleted
+//send all services to the socket client
+// if a new service was posted, a service gets updated or deleted
 function sendServicesToSocketClients(){
+  for (const socket of sockets) {
+    Service.find()
+      .populate('provider')
+      .then((services) => services.map((service) => socket.emit('data', service.view())))
+      .catch(next)
 
+  }
+}
+
+
+
+
+//send all services to the socket client
+// if a new service was posted, a service gets updated or deleted
+/*function sendServicesToSocketClients(){
   for (const socket of sockets) {
     //TODO query und co aus dem socket entnehmen, kann für jeden client anders sein
     Service.find()
@@ -56,6 +71,5 @@ function sendServicesToSocketClients(){
     // .catch(next)
 
   }
-}
-
+}*/
 

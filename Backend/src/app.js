@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
 io.on('connection', socket => {
   sockets.add(socket);
   console.log("new socket client connected");
-  //socket.emit('data', { data: products });
 
   socket.on('clientData', data => console.log(data));
 
