@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/angular';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,5 @@ import { CalendarOptions } from '@fullcalendar/angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dondus';
-
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth'
-  };
+  isCollapsed = true;
 }
