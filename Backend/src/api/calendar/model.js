@@ -13,7 +13,9 @@ const calendarSchema = new Schema({
     required: true
   },
   userId: {
-    type: String
+    type: Schema.ObjectId,
+    ref: 'User',
+    required: true
   }
 }, {
   timestamps: true,

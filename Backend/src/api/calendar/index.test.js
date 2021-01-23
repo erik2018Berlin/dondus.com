@@ -18,12 +18,12 @@ beforeEach(async () => {
 test('POST /calendars 201 (user)', async () => {
   const { status, body } = await request(app())
     .post(`${apiRoot}`)
-    .send({ access_token: userSession, name: 'test', notes: 'test', meeting-slotIds: 'test', userId: 'test' })
+    .send({ access_token: userSession, name: 'test', notes: 'test', meetingSlotIds: 'test', userId: 'test' })
   expect(status).toBe(201)
   expect(typeof body).toEqual('object')
   expect(body.name).toEqual('test')
   expect(body.notes).toEqual('test')
-  expect(body.meeting-slotIds).toEqual('test')
+  expect(body.meetingSlotIds).toEqual('test')
   expect(body.userId).toEqual('test')
 })
 
@@ -72,7 +72,7 @@ test('GET /calendars/:id 404 (user)', async () => {
 test('PUT /calendars/:id 200 (user)', async () => {
   const { status, body } = await request(app())
     .put(`${apiRoot}/${calendar.id}`)
-    .send({ access_token: userSession, name: 'test', notes: 'test', meeting-slotIds: 'test', userId: 'test' })
+    .send({ access_token: userSession, name: 'test', notes: 'test', meetingSlotIds: 'test', userId: 'test' })
   expect(status).toBe(200)
   expect(typeof body).toEqual('object')
   expect(body.id).toEqual(calendar.id)
@@ -91,7 +91,7 @@ test('PUT /calendars/:id 401', async () => {
 test('PUT /calendars/:id 404 (user)', async () => {
   const { status } = await request(app())
     .put(apiRoot + '/123456789098765432123456')
-    .send({ access_token: userSession, name: 'test', notes: 'test', meeting-slotIds: 'test', userId: 'test' })
+    .send({ access_token: userSession, name: 'test', notes: 'test', meetingSlotIds: 'test', userId: 'test' })
   expect(status).toBe(404)
 })
 
