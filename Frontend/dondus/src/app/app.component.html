@@ -15,20 +15,23 @@
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Services</a>
+            <a routerLink="/services">Services</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Kalender</a>
+            <a routerLink="/calendar">Kalender</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Chat</a>
-          </li>
+       <!--   <li nz-menu-item nzMatchRouter>
+            <a routerLink="/calendar">Chat</a>
+          </li> -->
         </ul>
       </li>
       <li nz-submenu nzOpen nzTitle="Einstellungen" nzIcon="setting">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Account</a>
+            <a routerLink="/login">Login</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/account">Account</a>
           </li>
         </ul>
       </li>

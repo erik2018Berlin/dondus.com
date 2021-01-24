@@ -17,6 +17,11 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { de_DE } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { ServicesComponent } from './pages/services/services.component';
+import { ChatComponent } from './pages/chat/chat.component';
+import { AccountComponent } from './pages/account/account.component';
+import { LoginComponent } from './pages/login/login.component';
 
 registerLocaleData(de);
 
@@ -27,7 +32,12 @@ FullCalendarModule.registerPlugins([
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalendarComponent,
+    ServicesComponent,
+    ChatComponent,
+    AccountComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

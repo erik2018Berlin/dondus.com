@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ServicesComponent } from "./pages/services/services.component";
+import { AccountComponent } from "./pages/account/account.component";
+import { CalendarComponent } from "./pages/calendar/calendar.component";
+import { LoginComponent } from "./pages/login/login.component";
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) }
+  {path: 'services',component: ServicesComponent},
+  {path: 'calendar',component: CalendarComponent},
+  {path: 'account',component: AccountComponent},
+  {path: 'login',component: LoginComponent},
+  { path: '', pathMatch: 'full', redirectTo: '/services' },
 ];
 
 @NgModule({
