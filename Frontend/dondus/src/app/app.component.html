@@ -17,7 +17,7 @@
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/services">Services</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li *ngIf="currentUser" nz-menu-item nzMatchRouter>
             <a routerLink="/calendar">Kalender</a>
           </li>
        <!--   <li nz-menu-item nzMatchRouter>
@@ -33,7 +33,7 @@
           <li *ngIf="currentUser" nz-menu-item nzMatchRouter>
             <a (click)="logout()">Logout</a>
           </li>
-          <li  nz-menu-item nzMatchRouter>
+          <li *ngIf="currentUser" nz-menu-item nzMatchRouter>
             <a routerLink="/account">Account</a>
           </li>
         </ul>

@@ -23,6 +23,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { AccountComponent } from './pages/account/account.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 registerLocaleData(de);
 
@@ -38,7 +39,8 @@ FullCalendarModule.registerPlugins([
     ServicesComponent,
     ChatComponent,
     AccountComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
