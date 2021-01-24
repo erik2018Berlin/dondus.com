@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './../../_services';
+import { CalendarService} from "./../../_services";
 import { Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/angular';
+import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-calendar',
@@ -11,10 +13,12 @@ import { CalendarOptions } from '@fullcalendar/angular';
 export class CalendarComponent implements OnInit {
 
   currentUser: any;
+  error: string;
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private calenderService: CalendarService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -34,6 +38,24 @@ export class CalendarComponent implements OnInit {
   // tslint:disable-next-line:typedef
   handleEventClick(arg) {
     alert('Event clicked! ');
+  }
+
+
+  ontestClick() {
+
+    this.calenderService.getAllCalendarsFromUser(this.currentUser)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+          //this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+          //this.loading = false;
+        });
+
+
   }
 
 }
