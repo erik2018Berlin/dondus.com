@@ -2,7 +2,8 @@ import mongoose, { Schema } from 'mongoose'
 
 const calendarSchema = new Schema({
   name: {
-    type: String
+    type: String,
+    required: true
   },
   notes: {
     type: String
@@ -13,7 +14,9 @@ const calendarSchema = new Schema({
     required: true
   },
   userId: {
-    type: String
+    type: Schema.ObjectId,
+    ref: 'User',
+    required: true
   }
 }, {
   timestamps: true,

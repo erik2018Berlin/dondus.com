@@ -5,6 +5,20 @@
 - [Auth](#auth)
 	- [Authenticate](#authenticate)
 	
+- [Booking](#booking)
+	- [Create booking](#create-booking)
+	- [Delete booking](#delete-booking)
+	- [Retrieve booking](#retrieve-booking)
+	- [Retrieve bookings](#retrieve-bookings)
+	- [Update booking](#update-booking)
+	
+- [Calendar](#calendar)
+	- [Create calendar](#create-calendar)
+	- [Delete calendar](#delete-calendar)
+	- [Retrieve calendar](#retrieve-calendar)
+	- [Retrieve calendars](#retrieve-calendars)
+	- [Update calendar](#update-calendar)
+	
 - [Customer](#customer)
 	- [Create customer](#create-customer)
 	- [Delete customer](#delete-customer)
@@ -63,6 +77,166 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>Master access_token.</p>							|
+
+# Booking
+
+## Create booking
+
+
+
+	POST /bookings
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| customerId			| 			|  <p>Booking's customerId.</p>							|
+| serviceId			| 			|  <p>Booking's serviceId.</p>							|
+| abo			| 			|  <p>Booking's abo.</p>							|
+| meetingId			| 			|  <p>Booking's meetingId.</p>							|
+
+## Delete booking
+
+
+
+	DELETE /bookings/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve booking
+
+
+
+	GET /bookings/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+
+## Retrieve bookings
+
+
+
+	GET /bookings
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update booking
+
+
+
+	PUT /bookings/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>admin access token.</p>							|
+| customerId			| 			|  <p>Booking's customerId.</p>							|
+| serviceId			| 			|  <p>Booking's serviceId.</p>							|
+| abo			| 			|  <p>Booking's abo.</p>							|
+| meetingId			| 			|  <p>Booking's meetingId.</p>							|
+
+# Calendar
+
+## Create calendar
+
+
+
+	POST /calendars
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| name			| 			|  <p>Calendar's name.</p>							|
+| notes			| 			|  <p>Calendar's notes.</p>							|
+| meeting-slotIds			| 			|  <p>Calendar's meeting-slotIds.</p>							|
+| userId			| 			|  <p>Calendar's userId.</p>							|
+
+## Delete calendar
+
+
+
+	DELETE /calendars/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve calendar
+
+
+
+	GET /calendars/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+
+## Retrieve calendars
+
+
+
+	GET /calendars
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update calendar
+
+
+
+	PUT /calendars/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>user access token.</p>							|
+| name			| 			|  <p>Calendar's name.</p>							|
+| notes			| 			|  <p>Calendar's notes.</p>							|
+| meeting-slotIds			| 			|  <p>Calendar's meeting-slotIds.</p>							|
+| userId			| 			|  <p>Calendar's userId.</p>							|
 
 # Customer
 
