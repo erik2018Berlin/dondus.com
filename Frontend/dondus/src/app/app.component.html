@@ -27,10 +27,13 @@
       </li>
       <li nz-submenu nzOpen nzTitle="Einstellungen" nzIcon="setting">
         <ul>
-          <li nz-menu-item nzMatchRouter>
+          <li *ngIf="currentUser == null" nz-menu-item nzMatchRouter>
             <a routerLink="/login">Login</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li *ngIf="currentUser" nz-menu-item nzMatchRouter>
+            <a (click)="logout()">Logout</a>
+          </li>
+          <li  nz-menu-item nzMatchRouter>
             <a routerLink="/account">Account</a>
           </li>
         </ul>
