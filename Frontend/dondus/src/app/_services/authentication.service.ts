@@ -18,6 +18,11 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
+  public set currentUserValue(user) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.currentUserSubject.next(user);
+  }
+
   login(username, password) {
     const body = {access_token: 'VBv8VuuehYuaqgt9tHUhQzgFmaPPkTM1'};
     let authorizationData = 'Basic ' + btoa(username + ':' + password);

@@ -11,14 +11,10 @@ import {ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 })
 export class ServiceListComponent implements OnInit {
 
-  public items;// = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
+  public items;
   private image = "http://dummyimage.com/169x185.png/5fa2dd/ffffff";
 
   constructor(private serviceService :ServiceService) {
-    this.serviceService.getAllServices().subscribe(x => {
-
-      console.log(x);
-    });
     this.items = this.serviceService.getAllServices();
     console.log(this.items);
   }
