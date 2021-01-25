@@ -1,0 +1,23 @@
+<div class="app-service-list">
+  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="service-viewport">
+    <div *cdkVirtualFor="let item of items" class="service-item">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <small class="text-muted">{{ item.id}}</small>
+          <p class="card-text">{{item.description}}</p>
+
+        </div>
+        <div class="card-footer">
+          <div class="col text-center">
+            <button class="btn btn-primary">Details</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>
+
+

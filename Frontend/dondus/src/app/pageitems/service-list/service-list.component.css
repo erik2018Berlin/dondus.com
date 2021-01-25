@@ -1,0 +1,30 @@
+.app-service-list .service-viewport {
+  height: 500px;
+  width: 100%;
+}
+
+.app-service-list .service-viewport .cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-service-list .service-item {
+  margin: 4px;
+}
+
+.app-service-list .service-item .card{
+  height: 450px;
+}
+
+.app-service-list .service-item .card .btn {
+
+  width: 90%;
+
+}
+
+
+.app-service-list .card-img-top{
+  width: auto;
+  height: 150px;
+object-fit: cover;
+}

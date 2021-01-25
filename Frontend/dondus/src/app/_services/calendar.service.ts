@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from "@angular/common/http";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "./authentication.service";
 
 @Injectable({ providedIn: 'root' })
 export class CalendarService {

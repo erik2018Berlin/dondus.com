@@ -18,12 +18,15 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { de_DE } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatListModule} from '@angular/material/list';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { AccountComponent } from './pages/account/account.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ServiceListComponent } from './pageitems/service-list/service-list.component';
 
 registerLocaleData(de);
 
@@ -40,7 +43,8 @@ FullCalendarModule.registerPlugins([
     ChatComponent,
     AccountComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ServiceListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,10 @@ FullCalendarModule.registerPlugins([
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ScrollingModule,
+    MatListModule
+
   ],
   providers: [{ provide: NZ_I18N, useValue: de_DE }],
   bootstrap: [AppComponent]
