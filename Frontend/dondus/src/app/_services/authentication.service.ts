@@ -19,8 +19,11 @@ export class AuthenticationService {
   }
 
   public set currentUserValue(user) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    this.currentUserSubject.next(user);
+    // Get back item "kittens" from local storage
+    var currUserFromLocalStorage = JSON.parse(localStorage.getItem("currentUser"));
+    currUserFromLocalStorage.user = user;
+    localStorage.setItem('currentUser', JSON.stringify(currUserFromLocalStorage));
+    this.currentUserSubject.next(currUserFromLocalStorage);
   }
 
   login(username, password) {

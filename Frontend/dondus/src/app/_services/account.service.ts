@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Router} from "@angular/router";
 import {map} from "rxjs/operators";
 import { AuthenticationService } from "./authentication.service";
@@ -12,13 +12,17 @@ export class AccountService {
 
   }
 
-  updateUser_name(currentUser) {
-    const body = {access_token: currentUser.token};
-    return this.http.post(`http://127.0.0.1:9000/users/${currentUser.user.id}`,body)
-      .pipe(map(user => {
-        this.authenticationService.currentUserValue = user;
-        return user;
-      }));
+  updateUser_name(currentUser,newName){
+    const body = {access_token: currentUser.token, name: newName};
+    this.http.put<any>('http://127.0.0.1:9000/users/' + currentUser.user.id, body).subscribe(data => {
+      this.authenticationService.currentUserValue = data;
+      return data;
+    })
+  }
+
+
+  getAllProvidersFromUser(currentUser) {
+    return this.http.get<any[]>(`http://127.0.0.1:9000/providers`);
   }
 
   updateUser_password(currentUser,oldpassword, newpassword) {

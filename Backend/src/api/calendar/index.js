@@ -42,7 +42,7 @@ router.post('/',
  */
 router.get('/',
   token({ required: true }),
-  query(),
+  query({userId:String}),
   index)
 
 /**

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './../../_services';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute,Router} from "@angular/router";
-import {first} from "rxjs/operators";
+import { AccountService } from "./../../_services";
+import { FormGroup} from "@angular/forms";
+import {FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-account',
@@ -10,69 +11,46 @@ import {first} from "rxjs/operators";
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  loginForm: FormGroup;
+
+  updateName: FormGroup;
+  userName;
+  userNameValue: string = '';
   loading = false;
   submitted = false;
-  returnUrl: string;
   error: string;
   success:string;
 
   currentUser: any;
 
-  constructor(private authenticationService: AuthenticationService,private formBuilder: FormBuilder,
-              private route: ActivatedRoute,private router: Router,) {
+  constructor(private authenticationService: AuthenticationService,
+              private accountService: AccountService)
+  {
     this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
-    console.log(this.currentUser);
+      this.userName = this.currentUser.user.name;
     });
   }
 
-  ngOnInit(): void {
-
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+  ngOnInit() {
+    this.updateName = new FormGroup({
+      'userName': new FormControl(this.userName,[Validators.required])
     });
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
-    // show success message on registration
-    if (this.route.snapshot.queryParams['registered']) {
-      this.success = 'Registration successful';
-    }
-
-
   }
-
-
-
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
-    // reset alerts on submit
-    this.error = null;
-    this.success = null;
-
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.error = error;
-          this.loading = false;
-        });
+    this.userNameValue = this.name;
+    this.accountService.updateUser_name(this.currentUser, this.userNameValue);
+    this.loading = false;
   }
+
+
+  // convenience getter for easy access to form fields
+  get f() { return this.updateName.controls; }
+  get name() { return this.updateName.get('userName').value; }
+
 
 }
