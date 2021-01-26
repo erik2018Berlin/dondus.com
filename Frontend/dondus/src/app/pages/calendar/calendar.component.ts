@@ -40,6 +40,19 @@ export class CalendarComponent implements OnInit {
     alert('Event clicked! ');
   }
 
+  createCalendar(){
+    this.calenderService.createNewCalendar(this.currentUser, "testcalendar", ["6004150a23027a67623f9d91", "6004150a23027a67623f9d90"], "blubb")
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+          //this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+          //this.loading = false;
+        });
+  }
 
   ontestClick() {
 
