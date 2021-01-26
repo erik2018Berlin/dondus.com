@@ -82,3 +82,14 @@ nz-content {
 .ant-layout-sider{
   background: white;
 }
+
+ng-sidebar-container {
+  height: 100vh;
+}
+
+::ng-deep .ng-sidebar {
+  background-color: white;
+  width: 25%;
+  padding: 2em 3em;
+  box-shadow: 0 0 2.5em black;
+}

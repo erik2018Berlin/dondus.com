@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
@@ -8,10 +8,18 @@ import { AuthenticationService } from './_services';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+@Injectable()
 export class AppComponent {
   isCollapsed = true;
-
   currentUser: any;
+  opened = false;
+
+
+  sidebarTitle: string;
+  sidebarId: string;
+  sidebarImage: any;
+  sidebarDesc: string;
 
   constructor(
     private router: Router,
@@ -20,8 +28,16 @@ export class AppComponent {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  logout() {
+  logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggleSidebar(title: any, id: any, image: any, desc: any): void {
+    this.opened = !this.opened;
+    this.sidebarTitle = title;
+    this.sidebarId = id;
+    this.sidebarImage = image;
+    this.sidebarDesc = desc;
   }
 }

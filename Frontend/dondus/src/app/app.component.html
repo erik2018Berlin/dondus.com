@@ -8,7 +8,6 @@
     <div class="sidebar-logo">
       <a href="http://localhost:4200/" target="_blank">
         <img src="../assets/Gruppe%2037.png" alt="logo">
-
       </a>
     </div>
     <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
@@ -41,23 +40,38 @@
     </ul>
   </nz-sider>
   <nz-layout>
-    <nz-header>
-      <div class="app-header">
+    <ng-sidebar-container>
+      <ng-sidebar [opened]="opened" position="right">
+        <app-sitemenu [title]="sidebarTitle" [id]="sidebarId" [image]="sidebarImage" [description]="sidebarDesc"></app-sitemenu>
+      </ng-sidebar>
+      <div ng-sidebar-content>
+        <nz-header>
+          <div class="app-header">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
             <i class="trigger"
                nz-icon
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
         </span>
+          </div>
+        </nz-header>
+        <nz-content>
+          <div class="inner-content">
+            <router-outlet></router-outlet>
+          </div>
+        </nz-content>
       </div>
-    </nz-header>
-    <nz-content>
-      <div class="inner-content">
-        <router-outlet></router-outlet>
-      </div>
-    </nz-content>
+    </ng-sidebar-container>
   </nz-layout>
 </nz-layout>
 
-<!-- HIER DEIN SITEMENU, KANN ABER GUT SEIN, DASS DU DAS HIER AUF DER PAGE WONADERS PLATZIEREN MUSST... KA-->
-<!-- <app-sitemenu></app-sitemenu> -->
+<!-- HIER DEIN SITEMENU, KANN ABER GUT SEIN, DASS DU DAS HIER AUF DER PAGE WONADERS PLATZIEREN MUSST... KA
+<ng-sidebar-container>
+  <ng-sidebar [opened]="opened" position="right">
+    <app-sitemenu></app-sitemenu>
+  </ng-sidebar>
+  <div>
+
+  </div>
+</ng-sidebar-container> -->
+

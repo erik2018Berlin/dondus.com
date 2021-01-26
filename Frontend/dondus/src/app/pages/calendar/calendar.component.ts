@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './../../_services';
-import { CalendarService} from "./../../_services";
+import { CalendarService} from './../../_services';
 import { Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/angular';
-import {first} from "rxjs/operators";
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-calendar',
@@ -40,20 +40,22 @@ export class CalendarComponent implements OnInit {
     alert('Event clicked! ');
   }
 
+  // tslint:disable-next-line:typedef
   createCalendar(){
-    this.calenderService.createNewCalendar(this.currentUser, "testcalendar", ["6004150a23027a67623f9d91", "6004150a23027a67623f9d90"], "blubb")
+    this.calenderService.createNewCalendar(this.currentUser, 'testcalendar', ['6004150a23027a67623f9d91', '6004150a23027a67623f9d90'], 'blubb')
       .pipe(first())
       .subscribe(
         data => {
           console.log(data);
-          //this.router.navigate([this.returnUrl]);
+          // this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
-          //this.loading = false;
+          // this.loading = false;
         });
   }
 
+  // tslint:disable-next-line:typedef
   ontestClick() {
 
     this.calenderService.getAllCalendarsFromUser(this.currentUser)
@@ -61,11 +63,11 @@ export class CalendarComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          //this.router.navigate([this.returnUrl]);
+          // this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
-          //this.loading = false;
+          // this.loading = false;
         });
 
 

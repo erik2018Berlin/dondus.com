@@ -20,6 +20,7 @@ import { registerLocaleData } from '@angular/common';
 import de from '@angular/common/locales/de';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ChatComponent } from './pages/chat/chat.component';
@@ -30,6 +31,7 @@ import { ServiceListComponent } from './pageitems/service-list/service-list.comp
 import { SitemenuComponent } from './pageitems/sitemenu/sitemenu.component';
 import { AccountCustomerComponent } from './pageitems/account-customer/account-customer.component';
 import { AccountProviderComponent } from './pageitems/account-provider/account-provider.component';
+import { SidebarModule } from 'ng-sidebar';
 
 registerLocaleData(de);
 
@@ -64,10 +66,11 @@ FullCalendarModule.registerPlugins([
     HttpClientModule,
     BrowserAnimationsModule,
     ScrollingModule,
-    MatListModule
-
+    MatListModule,
+    SidebarModule.forRoot(),
+    MatSidenavModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: de_DE }],
+  providers: [{ provide: NZ_I18N, useValue: de_DE }, AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
