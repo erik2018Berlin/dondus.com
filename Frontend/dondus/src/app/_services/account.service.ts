@@ -20,9 +20,26 @@ export class AccountService {
     })
   }
 
-
   getAllProvidersFromUser(currentUser) {
-    return this.http.get<any[]>(`http://127.0.0.1:9000/providers`);
+    return this.http.get<any[]>(`http://127.0.0.1:9000/providers/user=` + currentUser.user.id + '/field=id');
+  }
+
+  getAllCustomersFromUser(currentUser) {
+    return this.http.get<any[]>(`http://127.0.0.1:9000/customers/user=` + currentUser.user.id + '/field=id');
+  }
+
+  createProvider(currentUser,street, number, postcode, bankInformation){
+    const body = {access_token: currentUser.token, street: street, number: number, postcode: postcode, bankInformation: bankInformation};
+    this.http.post<any>('http://127.0.0.1:9000/providers', body).subscribe(data => {
+      return data;
+    })
+  }
+
+  createCustomer(currentUser,street, number, postcode, bankInformation){
+    const body = {access_token: currentUser.token, street: street, number: number, postcode: postcode, bankInformation: bankInformation};
+    this.http.post<any>('http://127.0.0.1:9000/customers', body).subscribe(data => {
+      return data;
+    })
   }
 
   updateUser_password(currentUser,oldpassword, newpassword) {

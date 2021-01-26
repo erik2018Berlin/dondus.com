@@ -28,6 +28,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ServiceListComponent } from './pageitems/service-list/service-list.component';
 import { SitemenuComponent } from './pageitems/sitemenu/sitemenu.component';
+import { AccountCustomerComponent } from './pageitems/account-customer/account-customer.component';
+import { AccountProviderComponent } from './pageitems/account-provider/account-provider.component';
 
 registerLocaleData(de);
 
@@ -46,7 +48,9 @@ FullCalendarModule.registerPlugins([
     LoginComponent,
     RegisterComponent,
     ServiceListComponent,
-    SitemenuComponent
+    SitemenuComponent,
+    AccountCustomerComponent,
+    AccountProviderComponent
   ],
   imports: [
     BrowserModule,
