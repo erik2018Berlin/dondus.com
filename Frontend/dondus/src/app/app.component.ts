@@ -40,4 +40,8 @@ export class AppComponent {
     this.sidebarImage = image;
     this.sidebarDesc = desc;
   }
+
+  closeSidebar(): void {
+    this.opened = false;
+  }
 }

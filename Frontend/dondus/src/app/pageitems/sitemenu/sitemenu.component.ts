@@ -21,7 +21,7 @@ export class SitemenuComponent implements OnInit {
   @Input()
   public description;
 
-  constructor(private util: AppComponent) {
+  constructor(public util: AppComponent) {
   }
 
   ngOnInit(): void {
