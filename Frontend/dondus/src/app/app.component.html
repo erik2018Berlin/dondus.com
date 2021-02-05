@@ -57,7 +57,7 @@
         </nz-header>
         <nz-content>
           <div class="inner-content">
-            <router-outlet></router-outlet>
+            <router-outlet (activate)="closeSidebar()"></router-outlet>
           </div>
         </nz-content>
       </div>

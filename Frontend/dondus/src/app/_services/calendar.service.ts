@@ -23,4 +23,15 @@ export class CalendarService {
       return this.http.post(`http://127.0.0.1:9000/calendars`, body);
     }
 
+
+    //get meeting with meeting id
+  getMeetingSlotWithId(id: string) {
+    return this.http.get<any[]>(`http://127.0.0.1:9000/meeting-slots/` + id);
+  }
+
+  getServiceWithId(id :string) {
+    return this.http.get<any[]>(`http://127.0.0.1:9000/services/` + id);
+  }
+
+
 }
