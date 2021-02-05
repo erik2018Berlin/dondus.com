@@ -5,8 +5,8 @@ import { CalendarService} from './../../_services';
 import { Router } from '@angular/router';
 import { CalendarOptions,FullCalendarComponent } from '@fullcalendar/angular';
 import {first} from 'rxjs/operators';
-import {AppComponent} from "../../app.component";
-
+import { AppComponent } from '../../app.component';
+import {$} from 'jquery';
 
 
 interface CalenderEntry {
@@ -22,6 +22,7 @@ interface CalenderEntry {
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
+
 export class CalendarComponent implements OnInit {
 
   currentUser: any;
@@ -49,7 +50,7 @@ export class CalendarComponent implements OnInit {
     height: 'auto',
     eventClick: this.handleEventClick.bind(this),
     events: this.calenderContent,
-    eventTimeFormat: { // like '14:30:00'
+    eventTimeFormat: {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
@@ -118,11 +119,10 @@ export class CalendarComponent implements OnInit {
 
 
   handleEventClick(arg) {
-    //todo sidemenu füllen und öffnene
-    alert('Event clicked! ');
+    this.util.toggleSidebar(arg.event.title, arg.event.id, arg.event.image, arg.event.description);
   }
 
-
+  // tslint:disable-next-line:typedef
   createCalendar(){
     this.calenderService.createNewCalendar(this.currentUser, 'calendar_' + this.currentUser.user.name, [], '')
       .pipe(first())
@@ -145,6 +145,7 @@ export class CalendarComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          return data;
           // this.router.navigate([this.returnUrl]);
         },
         error => {
