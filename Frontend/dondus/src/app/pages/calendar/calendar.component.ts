@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { CalendarOptions,FullCalendarComponent } from '@fullcalendar/angular';
 import {first} from 'rxjs/operators';
 import { AppComponent } from '../../app.component';
-import {$} from 'jquery';
 
 
 interface CalenderEntry {

@@ -93,3 +93,10 @@ ng-sidebar-container {
   padding: 2em 3em;
   box-shadow: 0 0 2.5em black;
 }
+
+
+
+
+.fc-scrollgrid-section fc-scrollgrid-section-header  fc-scrollgrid-section-sticky{
+  z-index: 2;
+}
