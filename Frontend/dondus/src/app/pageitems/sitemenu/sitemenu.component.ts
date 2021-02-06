@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 
 
 @Component({
@@ -38,6 +38,8 @@ export class SitemenuComponent implements OnInit {
 
   public dateSelected: any;
 
+  public timeSelected: any;
+
   constructor(public util: AppComponent) {
   }
 
@@ -51,7 +53,12 @@ export class SitemenuComponent implements OnInit {
 
   public getTime(event: any): void {
     console.log(event.toString());
-    document.getElementById('dateTimeInput').setAttribute('value', event.toString());
+    this.timeSelected = event.toString();
+  }
+
+  public goPaypal(): void{
+    alert('Ich bin Paypal, gib mir Geld!');
+    alert('Ausgewähltes Datum: ' + this.dateSelected + '\n Ausgewählte Uhrzeit: ' + this.timeSelected);
   }
 
 }
