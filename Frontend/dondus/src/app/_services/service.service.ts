@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Router} from "@angular/router";
 
 
@@ -18,4 +18,14 @@ export class ServiceService {
   getServiceWithId(id){
     return this.http.get<any>(`http://127.0.0.1:9000/services/` + id);
   }
+
+  getAllMeetingSlotsFromService(serviceId) {
+
+    const params = new HttpParams().set('serviceId', serviceId);
+    return this.http.get<any[]>(`http://127.0.0.1:9000/meeting-slots`, {params });
+  }
+
+
+
+
 }

@@ -1,7 +1,7 @@
 import {Component, Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from './_services';
+import {AuthenticationService, ServiceService} from './_services';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +26,8 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private serviceService: ServiceService,
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -45,6 +46,9 @@ export class AppComponent {
     this.sidebarPrice = price;
     this.sidebarCategory = category;
     this.sidebarPostcodes = postcodes;
+
+  this.serviceService.getAllMeetingSlotsFromService(id)
+    .subscribe(data => console.log(data))
 
   }
 
