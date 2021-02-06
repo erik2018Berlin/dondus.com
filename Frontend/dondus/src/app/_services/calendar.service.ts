@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import {Router} from '@angular/router';
+import {combineLatest, forkJoin, pipe} from "rxjs";
+import {map, mergeMap, switchMap} from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
 export class CalendarService {
@@ -25,6 +27,7 @@ export class CalendarService {
 
 
     //get meeting with meeting id
+
   getMeetingSlotWithId(id: string) {
     return this.http.get<any[]>(`http://127.0.0.1:9000/meeting-slots/` + id);
   }
@@ -33,5 +36,18 @@ export class CalendarService {
     return this.http.get<any[]>(`http://127.0.0.1:9000/services/` + id);
   }
 
+
+  async getMeeting_withId(id) {
+
+      //get the customer
+      const meeting = await this.http.get<any>(`http://127.0.0.1:9000/meeting-slots/` + id).toPromise();
+
+      //get the contract from url
+      const service = await this.http.get<any>(`http://127.0.0.1:9000/services/` + meeting.serviceId.id).toPromise();
+
+      service.date = meeting.date;
+      console.log(service);
+      return service;
+  }
 
 }

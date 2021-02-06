@@ -58,50 +58,24 @@ export class CalendarComponent implements OnInit {
   };
 
 
+
   ngOnInit(): void {
 
+    this.calenderContent = [];
 
     this.calenderService.getAllCalendarsFromUser(this.currentUser)
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
           if(data.length>0){
             for (var i = 0; i< data[0].meetingIds.length; i++){
 
 
+          this.calenderService.getMeeting_withId(data[0].meetingIds[i]).then(service =>{
+            this.calenderContent.push({title: service.title, id: service.id, image: 'http://dummyimage.com/169x185.png/5fa2dd/ffffff', description: service.description,date:  service.date.split('.')[0]});
+            this.calendaroptions.events = this.calenderContent;
+          });
 
-
-
-
-
-              this.calenderService.getMeetingSlotWithId(data[0].meetingIds[i])
-                .pipe(first())
-                .subscribe(
-                  data => {
-                    this.meeting = data;
-                    console.log(this.meeting)
-
-                     this.calenderService.getServiceWithId(this.meeting.serviceId.id)
-                        .pipe(first())
-                        .subscribe(
-                          service => {
-                          this.service = service;
-                          console.log(this.meeting.date)
-                            this.calenderContent.push({title: this.service.title, id: this.service.id, image: 'http://dummyimage.com/169x185.png/5fa2dd/ffffff', description: this.service.description,date:  this.meeting.date.split('.')[0]});//date:  '2021-09-14'});
-                           this.calendaroptions.events = this.calenderContent;
-
-                          },
-                          error => {
-                            this.error = error;
-                            // this.loading = false;
-                          });
-
-                  },
-                  error => {
-                    this.error = error;
-                    // this.loading = false;
-                  });
             }
           }else{
             this.createCalendar();
