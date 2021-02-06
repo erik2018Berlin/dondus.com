@@ -15,4 +15,7 @@ export class ServiceService {
     return this.http.get<any[]>(`http://127.0.0.1:9000/services?limit=100`);
   }
 
+  getServiceWithId(id){
+    return this.http.get<any>(`http://127.0.0.1:9000/services/` + id);
+  }
 }

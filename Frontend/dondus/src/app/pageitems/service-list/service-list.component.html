@@ -4,14 +4,14 @@
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="{{image}}" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{ item.title }}</h5>
-          <small class="text-muted">{{ item.id}}</small>
+          <h5 class="card-title">{{ item.category[0]}} <span class="badge badge-secondary">{{ item.price }}</span></h5>
+          <small class="text-muted">{{ item.title }}</small>
           <p class="card-text">{{item.description}}</p>
 
         </div>
         <div class="card-footer">
           <div class="col text-center">
-            <button class="btn btn-primary" (click)="callOnSidebar(item.title, item.id, image, item.description)">Details</button>
+            <button class="btn btn-primary" (click)="callOnSidebar(item.title, item.id, image, item.description, item.price, item.category[0], item.postcodes)">Details</button>
           </div>
         </div>
 

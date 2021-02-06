@@ -20,6 +20,9 @@ export class AppComponent {
   sidebarId: string;
   sidebarImage: any;
   sidebarDesc: string;
+  sidebarPrice: string;
+  sidebarCategory: string;
+  sidebarPostcodes : any;
 
   constructor(
     private router: Router,
@@ -33,12 +36,16 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
-  toggleSidebar(title: any, id: any, image: any, desc: any): void {
+  toggleSidebar(title: any, id: any, image: any, desc: any, price: any, category: any, postcodes: any): void {
     this.opened = !this.opened;
     this.sidebarTitle = title;
     this.sidebarId = id;
     this.sidebarImage = image;
     this.sidebarDesc = desc;
+    this.sidebarPrice = price;
+    this.sidebarCategory = category;
+    this.sidebarPostcodes = postcodes;
+
   }
 
   closeSidebar(): void {

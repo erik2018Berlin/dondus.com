@@ -21,6 +21,15 @@ export class SitemenuComponent implements OnInit {
   @Input()
   public description;
 
+  @Input()
+  public price;
+
+  @Input()
+  public cateory;
+
+  @Input()
+  public postcodes;
+
   constructor(public util: AppComponent) {
   }
 

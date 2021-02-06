@@ -1,5 +1,17 @@
-<H1>{{ title }}</H1>
-<img class="card-img-top" src="{{image}}" alt="service image">
-<H2>{{ id }}</H2>
-<p>{{ description }}</p>
-<button (click)="util.closeSidebar()">Close</button>
+<img class="side-menu-img" src="{{image}}" alt="service image">
+<div class="closeBtnContainer">
+  <button class="closeSideMenuBtn" (click)="util.closeSidebar()"><mat-icon class="icon">close</mat-icon></button>
+</div>
+
+<div class="sidemenuContentContainer">
+  <h5 class="card-title">{{ cateory}} <span class="badge badge-secondary">{{ price }}</span></h5>
+  <small class="text-muted">{{ title }}</small>
+  <p class="card-text">{{description}}</p>
+
+  <p>{{ description }}</p>
+</div>
+
+
+
+
+

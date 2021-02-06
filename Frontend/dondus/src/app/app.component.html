@@ -42,7 +42,8 @@
   <nz-layout>
     <ng-sidebar-container>
       <ng-sidebar [opened]="opened" position="right" id="sidemenu">
-        <app-sitemenu [title]="sidebarTitle" [id]="sidebarId" [image]="sidebarImage" [description]="sidebarDesc"></app-sitemenu>
+        <app-sitemenu [title]="sidebarTitle" [id]="sidebarId" [image]="sidebarImage"
+                      [description]="sidebarDesc" [price]="sidebarPrice" [cateory]="sidebarCategory" [postcodes]="sidebarPostcodes"></app-sitemenu>
       </ng-sidebar>
       <div ng-sidebar-content>
         <nz-header>

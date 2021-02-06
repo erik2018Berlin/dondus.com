@@ -21,6 +21,7 @@ import de from '@angular/common/locales/de';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ChatComponent } from './pages/chat/chat.component';
@@ -32,6 +33,7 @@ import { SitemenuComponent } from './pageitems/sitemenu/sitemenu.component';
 import { AccountCustomerComponent } from './pageitems/account-customer/account-customer.component';
 import { AccountProviderComponent } from './pageitems/account-provider/account-provider.component';
 import { SidebarModule } from 'ng-sidebar';
+import {MatIconModule} from "@angular/material/icon";
 
 registerLocaleData(de);
 
@@ -54,22 +56,24 @@ FullCalendarModule.registerPlugins([
     AccountCustomerComponent,
     AccountProviderComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FullCalendarModule,
-    IconsProviderModule,
-    NzLayoutModule,
-    NzMenuModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ScrollingModule,
-    MatListModule,
-    SidebarModule.forRoot(),
-    MatSidenavModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FullCalendarModule,
+        IconsProviderModule,
+        NzLayoutModule,
+        NzMenuModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ScrollingModule,
+        MatListModule,
+        SidebarModule.forRoot(),
+        MatSidenavModule,
+        MatIconModule,
+        MatButtonModule
+    ],
   providers: [{ provide: NZ_I18N, useValue: de_DE }, AppComponent],
   bootstrap: [AppComponent]
 })

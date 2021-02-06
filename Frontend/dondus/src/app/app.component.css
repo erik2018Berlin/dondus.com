@@ -90,7 +90,7 @@ ng-sidebar-container {
 ::ng-deep .ng-sidebar {
   background-color: white;
   width: 25%;
-  padding: 2em 3em;
+  padding: 0;
   box-shadow: 0 0 2.5em black;
 }
 
