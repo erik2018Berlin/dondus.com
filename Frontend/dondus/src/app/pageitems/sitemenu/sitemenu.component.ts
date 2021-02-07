@@ -41,12 +41,14 @@ export class SitemenuComponent implements OnInit, OnChanges {
   @Input()
   public opened;
 
-
+  firstOpen = true;
   currentUser: any;
   private month;
   private day;
+  private wasSuccessful;
+  private paymentSuccessfull;
 
-  @ViewChild('paypalRef',{static:true}) private paypalRef: ElementRef;
+  @ViewChild('paypalRef') private paypalRef: ElementRef;
 
   constructor(public util: AppComponent, public router: Router,
               private authenticationService: AuthenticationService,
@@ -55,24 +57,20 @@ export class SitemenuComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [property: string]: SimpleChange }){
-
     let sidemenuOpened: SimpleChange = changes['opened'];
 
-
-    if(sidemenuOpened.currentValue){
-     // this.renderPaypalBtn();
+    if(sidemenuOpened.currentValue && this.firstOpen  || this.wasSuccessful && sidemenuOpened.currentValue){
+      this.firstOpen = false;
+      this.wasSuccessful = false;
+        this.renderPaypalBtn();
     }
 
   }
 
   ngOnInit(): void {
     this.util.success = false;
-
-
-  }
-  ngAfterViewInit():void{
-    //this.renderPaypalBtn();
-
+    this.wasSuccessful = false;
+    this.paymentSuccessfull = false;
   }
 
 
@@ -81,9 +79,28 @@ export class SitemenuComponent implements OnInit, OnChanges {
       {
         style:{
           layout: 'horizontal'
+        },
+        createOrder:(data, actions) =>{
+          return actions.order.create({
+            purchase_units:[
+              {
+                amount: {
+                  value: (this.price.split("€")[1]).split(",")[0] + "." + (this.price.split("€")[1]).split(",")[1]
+                }
+              }
+            ]
+          });
+        },
+        onApprove: (data, actions) => {
+          return actions.order.capture().then(details =>{
+            this.paymentSuccessfull = true;
+          });
+        },
+        onError: error =>{
+          console.log(error);
         }
       }
-    ).render(this.paypalRef.nativeElement);
+    ).render(document.getElementById('paypalRef'));
   }
 
 
@@ -115,12 +132,12 @@ export class SitemenuComponent implements OnInit, OnChanges {
       this.router.navigate(['/login'], { queryParams: { returnUrl: '/services' }});
     }
 
-
     //TODO paypal integration
 
 
     if (this.serviceService.setBooking(this.id, (this.util.dateSelected + 'T' + this.util.timeSelected + ':00.000Z'), this.currentUser)){
       this.util.success = true;
+      this.wasSuccessful = true;
     }
 
   }

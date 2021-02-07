@@ -58,8 +58,8 @@ export class AppComponent {
     this.sidebarCategory = category;
     this.sidebarPostcodes = postcodes;
 
-    this.serviceService.getAllMeetingSlotsFromService(id)
-    .subscribe(data => console.log(data));
+  /*  this.serviceService.getAllMeetingSlotsFromService(id)
+    .subscribe(data => console.log(data));*/
 
   }
 

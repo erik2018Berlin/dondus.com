@@ -40,9 +40,11 @@
       </ng-template>
     </div>
 
+    <br>
+    <h7 style="color: #2e6da4"><b>Schritt 3:</b> Betrag bezahlen</h7>
+    <div id="paypalRef"></div>
 
-
-    <button class="btn btn-success submitBookingBtn" [disabled]="!this.util.timeSelected || !this.util.dateSelected" (click)="goPaypal()">Buchungsanfrage senden</button>
+    <button class="btn btn-success submitBookingBtn" [disabled]="!this.util.timeSelected || !this.util.dateSelected || !this.paymentSuccessfull" (click)="goPaypal()">Buchungsanfrage senden</button>
 
   </section>
   <!-- SuccessMessage -->
@@ -62,7 +64,7 @@
 </div>
 
 
-<div id="paypalRef"></div>
+
 
 
 
