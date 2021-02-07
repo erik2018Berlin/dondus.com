@@ -1,4 +1,4 @@
-import {Component, Injectable} from '@angular/core';
+import {Component, ElementRef, Injectable, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { SitemenuComponent } from './pageitems/sitemenu/sitemenu.component';
 
@@ -28,6 +28,8 @@ export class AppComponent {
   timeSelected: any;
   dateSelected: any;
 
+
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -35,6 +37,10 @@ export class AppComponent {
     // public sitemenuUtil: SitemenuComponent
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
+  ngOnInit():void{
+
   }
 
   logout(): void {
@@ -66,4 +72,5 @@ export class AppComponent {
     this.dateSelected = null;
     this.opened = false;
   }
+
 }

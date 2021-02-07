@@ -34,6 +34,7 @@ export class CalendarComponent implements OnInit {
   @ViewChild('mycalendar', { static: true }) calendar: FullCalendarComponent;
 
 
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,

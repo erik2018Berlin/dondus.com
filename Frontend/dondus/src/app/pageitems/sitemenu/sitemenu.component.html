@@ -39,6 +39,9 @@
         Set Time
       </ng-template>
     </div>
+
+
+
     <button class="btn btn-success submitBookingBtn" [disabled]="!this.util.timeSelected || !this.util.dateSelected" (click)="goPaypal()">Buchungsanfrage senden</button>
 
   </section>
@@ -58,6 +61,8 @@
 
 </div>
 
+
+<div id="paypalRef"></div>
 
 
 

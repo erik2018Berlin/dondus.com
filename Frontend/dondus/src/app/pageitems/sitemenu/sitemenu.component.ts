@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ElementRef, SimpleChanges, OnChanges, SimpleChange} from '@angular/core';
 import { AppComponent } from '../../app.component';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {Router} from '@angular/router';
@@ -12,7 +12,7 @@ import {AuthenticationService, ServiceService} from '../../_services';
   styleUrls: ['./sitemenu.component.css']
 })
 
-export class SitemenuComponent implements OnInit {
+export class SitemenuComponent implements OnInit, OnChanges {
 
   @Input()
   public title;
@@ -38,9 +38,15 @@ export class SitemenuComponent implements OnInit {
   @Input()
   public timeslots;
 
+  @Input()
+  public opened;
+
+
   currentUser: any;
   private month;
   private day;
+
+  @ViewChild('paypalRef',{static:true}) private paypalRef: ElementRef;
 
   constructor(public util: AppComponent, public router: Router,
               private authenticationService: AuthenticationService,
@@ -48,9 +54,38 @@ export class SitemenuComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
+  ngOnChanges(changes: { [property: string]: SimpleChange }){
+
+    let sidemenuOpened: SimpleChange = changes['opened'];
+
+
+    if(sidemenuOpened.currentValue){
+     // this.renderPaypalBtn();
+    }
+
+  }
+
   ngOnInit(): void {
     this.util.success = false;
+
+
   }
+  ngAfterViewInit():void{
+    //this.renderPaypalBtn();
+
+  }
+
+
+  renderPaypalBtn(){
+     window.paypal.Buttons(
+      {
+        style:{
+          layout: 'horizontal'
+        }
+      }
+    ).render(this.paypalRef.nativeElement);
+  }
+
 
   public getDate(event: MatDatepickerInputEvent<any>): void {
 
@@ -75,23 +110,19 @@ export class SitemenuComponent implements OnInit {
   }
 
   public goPaypal(): void{
-    // todo prüfen ob der User eingeloggt ist
+
     if (!this.currentUser){
       this.router.navigate(['/login'], { queryParams: { returnUrl: '/services' }});
     }
 
-    // todo Termin im Calender eintragen
+
+    //TODO paypal integration
+
+
     if (this.serviceService.setBooking(this.id, (this.util.dateSelected + 'T' + this.util.timeSelected + ':00.000Z'), this.currentUser)){
       this.util.success = true;
     }
 
-
-    // --> meeting-slot erstellen + get calendar from user + put on calendar with calendarID
-    // sucess nachricht -> "Buchungsanfrage abgeschlossen"
-
-    // todo, wenn das darüber alles geht, dann setzten wir paypal zwischen login abfrage und calendar eintragen
-    // alert('Ich bin Paypal, gib mir Geld!');
-    // alert('Ausgewähltes Datum: ' + this.dateSelected + '\n Ausgewählte Uhrzeit: ' + this.timeSelected);
   }
 
 }
