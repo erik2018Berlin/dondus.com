@@ -44,7 +44,13 @@
   </section>
   <!-- SuccessMessage -->
   <ng-template #successMessage>
-    <p>Buchungsanfrage erfolgreich abgeschlossen!</p>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Buchungsanfrage erfolgreich abgeschickt</h5>
+        <p class="card-text">Deine Buchungsanfrage wird an den Serviceprovider weitergeleitet. Du kannst deinen Termin jederzeit im Kalender einsehen.</p>
+        <a href="/calendar" class="btn btn-secondary">Zum Kalender</a>
+      </div>
+    </div>
   </ng-template>
 </section>
 
