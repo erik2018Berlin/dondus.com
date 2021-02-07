@@ -88,6 +88,7 @@ ng-sidebar-container {
 }
 
 ::ng-deep .ng-sidebar {
+  overflow: hidden;
   background-color: white;
   width: 25%;
   padding: 0;

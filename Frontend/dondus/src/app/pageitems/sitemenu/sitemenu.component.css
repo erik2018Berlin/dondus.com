@@ -35,3 +35,44 @@
 .sidemenuContentContainer{
   padding: 3px;
 }
+
+#setTimeBtn{
+  position: relative;
+  height: 60px;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: solid dimgrey 1px;
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background-color: rgba(0,0,0,.04);
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.125;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  text-align: left;
+  padding-left: .75em;
+  color: dimgrey;
+}
+
+#setTimeBtn:hover{
+  border-bottom: solid black 2px;
+}
+
+.settimeIcon{
+  position: absolute;
+  right: 20px;
+  top: 18px;
+}
+
+.submitBookingBtn{
+  position: absolute;
+  bottom: 5px;
+  width: 98%;
+
+}
+
+.mat-form-field{
+  width: 100%;
+}

@@ -53,6 +53,9 @@ export class AppComponent {
   }
 
   closeSidebar(): void {
+    //success= false
+    //timeselecet
+    //dateselecete
     this.opened = false;
   }
 }

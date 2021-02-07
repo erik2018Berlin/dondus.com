@@ -46,7 +46,6 @@ export class CalendarService {
       const service = await this.http.get<any>(`http://127.0.0.1:9000/services/` + meeting.serviceId.id).toPromise();
 
       service.date = meeting.date;
-      console.log(service);
       return service;
   }
 
