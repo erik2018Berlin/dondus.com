@@ -14,7 +14,7 @@
 <section *ngIf="this.router.url ==='/services'">
   <hr>
 
-  <section *ngIf="!success; else successMessage">
+  <section *ngIf="!this.util.success; else successMessage">
     <div>
       <h7 style="color: #2e6da4"><b>Schritt 1:</b> Datum auswählen</h7>
       <mat-form-field appearance="fill">
@@ -28,8 +28,8 @@
     <div ><!-- <div *ngIf="dateSelected">-->
       <h7 style="color: #2e6da4"><b>Schritt 2:</b> Zeit auswählen</h7>
       <button id="setTimeBtn" [ngxTimepicker]="timepicker" [format]="24">
-        <div *ngIf="timeSelected; else noTimeSelected">
-          {{timeSelected}}
+        <div *ngIf="this.util.timeSelected; else noTimeSelected">
+          {{this.util.timeSelected}}
         </div>
         <mat-icon class="settimeIcon">alarm</mat-icon>
       </button>
@@ -39,7 +39,7 @@
         Set Time
       </ng-template>
     </div>
-    <button class="btn btn-success submitBookingBtn" [disabled]="!timeSelected || !dateSelected" (click)="goPaypal()">Buchungsanfrage senden</button>
+    <button class="btn btn-success submitBookingBtn" [disabled]="!this.util.timeSelected || !this.util.dateSelected" (click)="goPaypal()">Buchungsanfrage senden</button>
 
   </section>
   <!-- SuccessMessage -->

@@ -1,5 +1,6 @@
 import {Component, Injectable} from '@angular/core';
 import { Router } from '@angular/router';
+import { SitemenuComponent } from './pageitems/sitemenu/sitemenu.component';
 
 import {AuthenticationService, ServiceService} from './_services';
 
@@ -22,12 +23,16 @@ export class AppComponent {
   sidebarDesc: string;
   sidebarPrice: string;
   sidebarCategory: string;
-  sidebarPostcodes : any;
+  sidebarPostcodes: any;
+  success: any = false;
+  timeSelected: any;
+  dateSelected: any;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
     private serviceService: ServiceService,
+    // public sitemenuUtil: SitemenuComponent
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -47,15 +52,18 @@ export class AppComponent {
     this.sidebarCategory = category;
     this.sidebarPostcodes = postcodes;
 
-  this.serviceService.getAllMeetingSlotsFromService(id)
-    .subscribe(data => console.log(data))
+    this.serviceService.getAllMeetingSlotsFromService(id)
+    .subscribe(data => console.log(data));
 
   }
 
   closeSidebar(): void {
-    //success= false
-    //timeselecet
-    //dateselecete
+    // success= false
+    this.success = false;
+    // timeselecet
+    this.timeSelected = null;
+    // dateselecete
+    this.dateSelected = null;
     this.opened = false;
   }
 }
